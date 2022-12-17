@@ -18,9 +18,12 @@
 
             <TextView
                 android:id="@+id/textTitle"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Titile"
+                android:paddingTop="10dp"
+                android:paddingLeft="30dp"
+                android:paddingBottom="3dp"
+                android:text="Title"
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
@@ -28,21 +31,32 @@
                 android:id="@+id/textDeadline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="10dp"
+                android:paddingTop="30dp"
+                android:paddingLeft="30dp"
                 android:text="01-12-2022"
                 android:textSize="20sp"
                 android:textStyle="italic" />
+ />
 
         </LinearLayout>
 
     </LinearLayout>
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="95dp"
+        android:layout_marginTop="80dp"
+        android:layout_weight="2" />
 
     <Button
         android:id="@+id/btnDetailTask"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/white"
-        android:gravity="right"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="6dp"
         android:text="detail"
         android:textColor="@color/black" />
 

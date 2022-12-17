@@ -5,50 +5,63 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+
     tools:context=".AddActivity">
+
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="3dp"
+        android:paddingTop="60dp"
+        android:paddingLeft="30dp"
         android:paddingBottom="3dp"
         android:text="Title"
         android:textSize="30sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/edtextTitle_add"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
         android:textSize="15sp"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Deadline"
+        android:paddingTop="60dp"
+        android:paddingLeft="30dp"
         android:textSize="30sp"
         android:textStyle="bold"/>
 
     <EditText
         android:id="@+id/edtextDeadline_add"
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_width="350dp"
+        android:layout_gravity="center"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
         android:textSize="15sp"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="3dp"
         android:paddingBottom="3dp"
         android:text="Content"
+        android:paddingTop="60dp"
+        android:paddingLeft="30dp"
         android:textSize="30sp"
         android:textStyle="bold"/>
 
 
     <EditText
         android:id="@+id/edtextContent_add"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:paddingTop="2dp"
         android:paddingBottom="2dp"
         android:textSize="15sp"/>
@@ -62,8 +75,10 @@
             android:id="@+id/btnAdd_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15sp"
-            android:text="Add"/>
+            android:layout_marginLeft="160dp"
+            android:layout_marginTop="60dp"
+            android:gravity="center"
+            android:text="Add" />
 
     </LinearLayout>
 
