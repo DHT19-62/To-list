@@ -25,8 +25,7 @@
         android:paddingTop="2dp"
         android:paddingBottom="2dp"
         android:textSize="15sp"
-        android:editable="false"
-        />
+        android:enabled="false"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -45,7 +44,7 @@
         android:paddingTop="2dp"
         android:paddingBottom="2dp"
         android:textSize="15sp"
-        android:editable="false"/>
+        android:enabled="false"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -66,28 +65,40 @@
         android:paddingTop="2dp"
         android:paddingBottom="2dp"
         android:textSize="15sp"
-        android:editable="false"/>
+        android:enabled="false"/>
+
+    <CheckBox
+        android:id="@+id/checkBox_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Complete"
+        android:textSize="20sp"
+        android:enabled="false"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/btnEdit_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60sp"
-            android:layout_marginLeft="120sp"
             android:text="Edit"/>
+
+        <Button
+            android:id="@+id/btnDelete_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Delete"/>
 
         <Button
             android:id="@+id/btnSave_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60sp"
-            android:layout_marginLeft="15sp"
-            android:text="Save"/>
+            android:text="Save"
+            android:visibility="gone"/>
 
     </LinearLayout>
 

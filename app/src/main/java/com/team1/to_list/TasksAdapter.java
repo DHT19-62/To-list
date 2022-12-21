@@ -1,11 +1,15 @@
 package com.team1.to_list;
 
+import static android.content.ContentValues.TAG;
+
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,12 +17,19 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.util.List;
 
 public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.ViewHolder> {
 
     private List mTasks;
     private Context mContext;
+
 
     public TasksAdapter(List mTasks, Context mContext) {
         this.mTasks = mTasks;
@@ -46,8 +57,7 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.ViewHolder> 
 
         holder.titile.setText(task.getTitle());
         holder.deadline.setText(task.getDeadline());
-
-
+        holder.checkBox.setChecked(task.getComplete());
     }
 
     @Override
@@ -61,6 +71,7 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.ViewHolder> 
         public TextView titile;
         public TextView deadline;
         public Button detail;
+        CheckBox checkBox;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -82,6 +93,8 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.ViewHolder> 
                     intent.putExtra("title", tasks.getTitle());
                     intent.putExtra("deadline", tasks.getDeadline());
                     intent.putExtra("content", tasks.getContent());
+                    intent.putExtra("isComplete", tasks.getComplete());
+                    intent.putExtra("id", tasks.getId());
                     mContext.startActivity(intent);
                 }
             });
@@ -91,6 +104,7 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.ViewHolder> 
             titile = this.itemView.<TextView>findViewById(R.id.textTitle);
             deadline = this.itemView.<TextView>findViewById(R.id.textDeadline);
             detail = this.itemView.<Button>findViewById(R.id.btnDetailTask);
+            checkBox = itemView.<CheckBox>findViewById(R.id.checkBox);
         }
     }
 }

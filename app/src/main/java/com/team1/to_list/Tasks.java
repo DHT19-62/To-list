@@ -1,6 +1,7 @@
 package com.team1.to_list;
 
 public class Tasks {
+    String id;
     String title;
     String content;
     String deadline;
@@ -11,6 +12,14 @@ public class Tasks {
         this.content = content;
         this.deadline = deadline;
         this.isComplete = false;
+    }
+
+    public Tasks(String id, String title, String content, String deadline, Boolean isComplete) {
+        this.id = id;
+        this.title = title;
+        this.content = content;
+        this.deadline = deadline;
+        this.isComplete = isComplete;
     }
 
     public String getTitle() {
@@ -43,5 +52,13 @@ public class Tasks {
 
     public void setComplete(Boolean complete) {
         isComplete = complete;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }
