@@ -72,6 +72,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Complete"
+        android:layout_marginLeft="27dp"
+        android:layout_marginTop="10dp"
         android:textSize="20sp"
         android:enabled="false"/>
 
@@ -80,6 +82,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Create reminder"
+        android:layout_marginLeft="27dp"
+        android:layout_marginTop="5dp"
         android:textSize="20sp"
         android:enabled="false"/>
 
@@ -87,6 +91,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:layout_marginTop="40dp"
         android:orientation="horizontal">
 
         <Button
@@ -99,13 +104,15 @@
             android:id="@+id/btnDelete_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Delete"/>
+            android:text="Delete"
+            android:layout_marginLeft="30dp"/>
 
         <Button
             android:id="@+id/btnSave_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Save"
+            android:layout_marginLeft="30dp"
             android:visibility="gone"/>
 
     </LinearLayout>
