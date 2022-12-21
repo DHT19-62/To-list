@@ -5,11 +5,13 @@ import static android.content.ContentValues.TAG;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -17,6 +19,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,6 +27,7 @@ public class AddActivity extends AppCompatActivity {
 
     Button btnAdd;
     EditText title, deadline, content;
+    Calendar calendarEvent;
     FirebaseFirestore database;
 
     @Override
@@ -49,6 +53,7 @@ public class AddActivity extends AppCompatActivity {
                 task.put("title", title.getText().toString());
                 task.put("deadline", deadline.getText().toString());
                 task.put("content", content.getText().toString());
+                task.put("isComplete", false);
 
                 // Add a new document with a generated ID
                 database = FirebaseFirestore.getInstance();
@@ -69,6 +74,37 @@ public class AddActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        deadline.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatePicker();
+            }
+        });
+    }
+
+    private void DatePicker() {
+        int selectedYear = 2022;
+        int selectedMonth = 12;
+        int selectedDayOfMonth = 21;
+
+        // Date Select Listener.
+        DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker view, int year,
+                                  int monthOfYear, int dayOfMonth) {
+                deadline.setText(dayOfMonth + " - " + (monthOfYear + 1) + " - " + year);
+            }
+        };
+
+        // Create DatePickerDialog (Spinner Mode):
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this,
+                android.R.style.Theme_Holo_Light_Dialog_NoActionBar,
+                dateSetListener, selectedYear, selectedMonth, selectedDayOfMonth);
+
+        // Show
+        datePickerDialog.show();
     }
 
 
@@ -77,7 +113,5 @@ public class AddActivity extends AppCompatActivity {
         title = this.<EditText>findViewById(R.id.edtextTitle_add);
         deadline = this.<EditText>findViewById(R.id.edtextDeadline_add);
         content = this.<EditText>findViewById(R.id.edtextContent_add);
-
-
     }
 }

@@ -75,6 +75,14 @@
         android:textSize="20sp"
         android:enabled="false"/>
 
+    <CheckBox
+        android:id="@+id/checkBoxCreateEvent_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create reminder"
+        android:textSize="20sp"
+        android:enabled="false"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

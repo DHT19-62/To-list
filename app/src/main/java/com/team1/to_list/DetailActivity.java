@@ -5,6 +5,7 @@ import static android.content.ContentValues.TAG;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,6 +13,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.DatePicker;
 import android.widget.EditText;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -21,6 +23,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,7 +31,8 @@ public class DetailActivity extends AppCompatActivity {
 
     EditText title, deadline, content;
     Button btnEdit, btnSave, btnDelete;
-    CheckBox checkBox;
+    CheckBox checkBox, checkBoxCreateReminder;
+    Calendar calendarEvent;
     Intent intent;
 
     FirebaseFirestore db;
@@ -55,6 +59,7 @@ public class DetailActivity extends AppCompatActivity {
                 deadline.setEnabled(true);
                 content.setEnabled(true);
                 checkBox.setEnabled(true);
+                checkBoxCreateReminder.setEnabled(true);
                 btnSave.setVisibility(View.VISIBLE);
             }
         }));
@@ -74,6 +79,64 @@ public class DetailActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        deadline.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatePicker();
+            }
+        });
+
+        checkBoxCreateReminder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (checkBoxCreateReminder.isChecked()){
+                    if(!deadline.getText().toString().equals("")){
+                        CreateReminder();
+                    }
+                }
+            }
+        });
+    }
+
+    private void CreateReminder() {
+        if (!deadline.getText().toString().equals("")){
+            calendarEvent = Calendar.getInstance();
+            Intent i = new Intent(Intent.ACTION_EDIT);
+            i.setType("vnd.android.cursor.item/event");
+            i.putExtra("beginTime", calendarEvent.getTimeInMillis());
+            i.putExtra("allDay", true);
+            i.putExtra("rule", "FREQ=YEARLY");
+            i.putExtra("endTime", calendarEvent.getTimeInMillis() + 60 * 60 * 1000);
+            i.putExtra("title", title.getText().toString());
+            startActivity(i);
+        }
+    }
+
+    private void DatePicker() {
+        calendarEvent = Calendar.getInstance();
+        int selectedYear = calendarEvent.YEAR;
+        int selectedMonth = calendarEvent.MONTH+1;
+        int selectedDayOfMonth = calendarEvent.DAY_OF_MONTH;
+
+        // Date Select Listener.
+        DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker view, int year,
+                                  int monthOfYear, int dayOfMonth) {
+                calendarEvent.set(year,monthOfYear+1, dayOfMonth);
+                deadline.setText(dayOfMonth + " - " + (monthOfYear + 1) + " - " + year);
+            }
+        };
+
+        // Create DatePickerDialog (Spinner Mode):
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this,
+                android.R.style.Theme_Holo_Light_Dialog_NoActionBar,
+                dateSetListener, selectedYear, selectedMonth, selectedDayOfMonth);
+
+        // Show
+        datePickerDialog.show();
     }
 
     private void Deletecurrenttask() {
@@ -139,6 +202,8 @@ public class DetailActivity extends AppCompatActivity {
 
         checkBox = this.<CheckBox>findViewById(R.id.checkBox_detail);
         checkBox.setChecked(intent.getBooleanExtra("isComplete", true));
+
+        checkBoxCreateReminder = this.<CheckBox>findViewById(R.id.checkBoxCreateEvent_detail);
 
         btnSave = this.<Button>findViewById(R.id.btnSave_detail);
         btnEdit = this.<Button>findViewById(R.id.btnEdit_detail);
