@@ -53,6 +53,7 @@ public class AddActivity extends AppCompatActivity {
                 task.put("title", title.getText().toString());
                 task.put("deadline", deadline.getText().toString());
                 task.put("content", content.getText().toString());
+
                 task.put("isComplete", false);
 
                 // Add a new document with a generated ID
