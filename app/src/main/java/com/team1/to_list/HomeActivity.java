@@ -71,6 +71,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private void LoadDataBase() {
         database.collection("tasks")
+                .orderBy("deadline")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override

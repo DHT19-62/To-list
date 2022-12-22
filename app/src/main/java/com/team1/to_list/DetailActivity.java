@@ -115,9 +115,9 @@ public class DetailActivity extends AppCompatActivity {
 
     private void DatePicker() {
         calendarEvent = Calendar.getInstance();
-        int selectedYear = calendarEvent.YEAR;
-        int selectedMonth = calendarEvent.MONTH+1;
-        int selectedDayOfMonth = calendarEvent.DAY_OF_MONTH;
+        int selectedYear = 2022;
+        int selectedMonth = 12+1;
+        int selectedDayOfMonth = 22;
 
         // Date Select Listener.
         DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {

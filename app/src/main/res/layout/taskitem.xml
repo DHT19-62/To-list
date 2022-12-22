@@ -1,38 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:paddingBottom="10dp"
-    android:paddingTop="10dp">
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp">
 
-    <LinearLayout
+    <CheckBox
+        android:id="@+id/checkBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_alignParentLeft="true"
+        android:layout_centerInParent="true"
+        android:padding="1dp"
+        android:layout_gravity="center" />
+
+    <LinearLayout
+        android:id="@+id/line1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/checkBox"
+        android:layout_centerInParent="true"
+        android:layout_toLeftOf="@id/btnDetailTask"
+        android:orientation="horizontal">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textTitle"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="10dp"
-                android:paddingLeft="30dp"
-                android:paddingBottom="3dp"
                 android:text="Title"
                 android:textSize="12sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textDeadline"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="30dp"
-                android:paddingLeft="30dp"
                 android:text="01-12-2022"
                 android:textSize="12sp"
                 android:textStyle="italic" />
@@ -41,23 +49,16 @@
 
     </LinearLayout>
 
-    <CheckBox
-        android:id="@+id/checkBox"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="95dp"
-        android:layout_marginTop="80dp"
-        android:layout_weight="2"/>
-
     <Button
         android:id="@+id/btnDetailTask"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="5dp"
         android:backgroundTint="#fafafa"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="6dp"
         android:text="detail"
-        android:textSize="13sp"
-        android:textColor="@color/black" />
+        android:textColor="@color/black"
+        android:textSize="13sp" />
 
-</LinearLayout>
+</RelativeLayout>
