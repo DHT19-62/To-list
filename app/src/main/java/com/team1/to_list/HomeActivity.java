@@ -72,6 +72,7 @@ public class HomeActivity extends AppCompatActivity {
     private void LoadDataBase() {
         database.collection("tasks")
                 .orderBy("deadline")
+                .orderBy("isComplete")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -79,7 +80,7 @@ public class HomeActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             tasks.clear();
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                 Log.d(TAG, document.getId() + " => " + document.getData());
                                 String id = document.getId();
                                 String title = document.get("title").toString();
                                 String deadline = document.get("deadline").toString();
